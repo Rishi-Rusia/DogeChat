@@ -1,0 +1,201 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.home {
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  display: flex;
+  border: 1px solid white;
+  height: 80%;
+  width: 65%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.sidebar {
+  flex: 1;
+  border: 1px solid white;
+  background-color: #cde990;
+}
+
+.chats {
+  flex: 2;
+  background-color: #eeeeee;
+}
+
+.navbar {
+  height: 50px;
+  background-color: #658864;
+  display: flex;
+  justify-content: space-between;
+  border-right: none;
+}
+
+#default-profile {
+  border-radius: 50%;
+  height: 40px;
+  margin-top: 5px;
+  border: 0.5px solid white;
+  margin-right: 10px;
+}
+
+#username {
+  color: #ffffe8;
+  font-family: "Sofia Sans", sans-serif;
+  font-size: 24px;
+  margin-top: 14px;
+  margin-left: 5px;
+}
+
+.search-user {
+  width: 100%;
+  height: 35px;
+  background-color: #ffffe8;
+  border: none;
+  outline: none;
+  font-family: "Sofia Sans", sans-serif;
+  font-size: 16px;
+  color: #658864;
+}
+
+.search-user :focus {
+  outline: none;
+}
+
+.search-user::placeholder {
+  color: gray;
+  opacity: 50%;
+}
+
+.contact-chat {
+  display: flex;
+  background-color: #658864;
+  color: #fae3e3;
+  font-family: "Sofia Sans", sans-serif;
+  border-bottom: 1.5px solid white;
+  cursor: pointer;
+}
+
+.contact-chat:hover {
+  background-color: #343a27;
+}
+
+.contact-profile {
+  border-radius: 50%;
+  border: 1px solid white;
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+
+  object-fit: cover;
+
+  margin-top: 3px;
+  margin-left: 7px;
+}
+
+.contact-name-message {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+.contact-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top: 7px;
+  letter-spacing: 1px;
+}
+
+.contact-last-message {
+  margin: 0px;
+  font-size: 12px;
+  opacity: 80%;
+}
+
+.topbar {
+  height: 50px;
+  background-color: #658864;
+  border: 1px solid white;
+  border-left: none;
+  color: #fae3e3;
+  font-family: "Sofia Sans", sans-serif;
+}
+
+.topbar-contact-name {
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding-top: 15px;
+  margin-left: 15px;
+  right: 0;
+}
+
+.sendbox {
+  height: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-top: #3c6255;
+}
+
+.sendbox input {
+  height: 50px;
+  font-family: "Sofia Sans", sans-serif;
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  color: #3c6255;
+  padding-left: 20px;
+  overflow: scroll;
+}
+
+.messages-component {
+  height: 380px;
+  font-family: "Sofia Sans", sans-serif;
+  background-color: #a6bb8d;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.sendButton {
+  height: 40px;
+  width: 40px;
+  margin-top: 4px;
+  margin-right: 4px;
+  color: #3c6255;
+  cursor: pointer;
+}
+
+.clipButton {
+  height: 30px;
+  width: 30px;
+  margin-top: 10px;
+  color: #3c6255;
+  cursor: pointer;
+}
+
+.sentMessage {
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color: rgb(248, 233, 235);
+  max-width: 70%;
+  display: flex;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 0px 12px 12px 12px;
+  margin-bottom: 20px;
+}
