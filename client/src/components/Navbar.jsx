@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { AuthContext } from "../context/Authcontext";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Navbar() {
+  const { currentUser } = useContext(AuthContext);
+  const [userName, setuserName] = useState("");
+  const [photo, setphoto] = useState("");
+
+  useEffect(() => {
+    const loader = async () => {
+      const docRef = doc(db, "users", `${currentUser.uid}`);
+      const docSnap = await getDoc(docRef);
+
+      setuserName(
+        docSnap._document.data.value.mapValue.fields.username.stringValue
+      );
+      setphoto(docSnap._document.data.value.mapValue.fields.image.stringValue);
+    };
+
+    loader();
+  }, [currentUser.uid]);
+
   return (
     <div className="navbar">
-      <span id="username">Rishi Rusia</span>
-      <img
-        src="https://i.pinimg.com/736x/3d/66/78/3d667893c5788613ff3590ca218a9cb2.jpg"
-        alt=""
-        id="default-profile"
-      />
+      <span id="username">{userName}</span>
+      <img src={photo} alt="" id="default-profile" />
     </div>
   );
 }

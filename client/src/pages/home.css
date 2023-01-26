@@ -18,15 +18,19 @@ body {
   display: flex;
   border: 1px solid white;
   height: 80%;
-  width: 65%;
+  width: 700px;
   border-radius: 15px;
   overflow: hidden;
+  position: relative;
 }
 
 .sidebar {
   flex: 1;
   border: 1px solid white;
   background-color: #cde990;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
 }
 
 .chats {
@@ -45,9 +49,11 @@ body {
 #default-profile {
   border-radius: 50%;
   height: 40px;
+  width: 40px;
   margin-top: 5px;
   border: 0.5px solid white;
   margin-right: 10px;
+  object-fit: cover;
 }
 
 #username {
@@ -77,6 +83,10 @@ body {
   color: gray;
   opacity: 50%;
 }
+
+/* .chat {
+  overflow: scroll;
+} */
 
 .contact-chat {
   display: flex;
@@ -133,6 +143,8 @@ body {
 }
 
 .topbar-contact-name {
+  display: flex;
+  justify-content: space-between;
   font-size: 20px;
   letter-spacing: 2px;
   padding-top: 15px;
@@ -140,12 +152,37 @@ body {
   right: 0;
 }
 
+.topbar-contact-name button {
+  margin-right: 30px;
+  background-color: rgb(248, 233, 235);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-bottom: 3px;
+  font-family: "Sofia Sans", sans-serif;
+  font-size: 17px;
+}
+
+.topbar-contact-name button:hover {
+  opacity: 90%;
+}
+
+.menu-button {
+  margin-right: none;
+  display: none;
+}
+
+.topbar input {
+  display: none;
+}
+
 .sendbox {
   height: 50px;
   background-color: white;
   display: flex;
   justify-content: space-between;
-  border-top: #3c6255;
+  border-top: #a6bb8d 5px solid;
 }
 
 .sendbox input {
@@ -160,8 +197,12 @@ body {
   overflow: scroll;
 }
 
+.sendbox input ::placeholder {
+  color: #a6bb8d;
+}
 .messages-component {
-  height: 380px;
+  /* height: 380px; */
+  height: 78%;
   font-family: "Sofia Sans", sans-serif;
   background-color: #a6bb8d;
   display: flex;
@@ -171,13 +212,19 @@ body {
   overflow-x: hidden;
 }
 
+/* .messages-component::-webkit-scrollbar {
+} */
+
 .sendButton {
   height: 40px;
-  width: 40px;
   margin-top: 4px;
-  margin-right: 4px;
-  color: #3c6255;
+  margin-right: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #3c6255;
   cursor: pointer;
+  border: none;
+  border-radius: 2px;
 }
 
 .clipButton {
@@ -188,14 +235,450 @@ body {
   cursor: pointer;
 }
 
-.sentMessage {
-  margin-top: 20px;
-  margin-left: 20px;
+.receivedMessage {
+  /* margin-top: 2px; */
+  margin-left: 5px;
   background-color: rgb(248, 233, 235);
   max-width: 70%;
+  min-width: 10%;
   display: flex;
   width: fit-content;
-  padding: 20px;
+  padding: 2px;
   border-radius: 0px 12px 12px 12px;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
+  justify-content: center;
+}
+
+.receivedMessage p {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.sentMessage {
+  /* margin-top: 2px; */
+
+  margin-right: 8px;
+  background-color: rgb(114, 136, 100);
+  max-width: 70%;
+  min-width: 10%;
+  display: flex;
+  width: fit-content;
+  padding: 2px;
+  border-radius: 12px 0px 12px 12px;
+  margin-bottom: 2px;
+  justify-content: center;
+}
+
+.sentMessage p {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.owner {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-chat-search {
+  display: flex;
+  background-color: rgb(5, 81, 5);
+  color: #fae3e3;
+  font-family: "Sofia Sans", sans-serif;
+  border-bottom: 1.5px solid white;
+  cursor: pointer;
+}
+
+.contact-chat-search:hover {
+  opacity: 80%;
+}
+
+.searchResults {
+  overflow: scroll;
+}
+
+.searchResults::-webkit-scrollbar {
+  display: none;
+}
+
+/* #########################################################################################################################
+####################################### M E D I A   Q U E R I E S #######################################################
+######################################################################################################################### */
+@media screen and (max-width: 700px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .home {
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-container {
+    display: flex;
+    border: 1px solid white;
+    height: 80%;
+    width: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .sidebar {
+    flex: 1;
+    border: 1px solid white;
+    background-color: #cde990;
+    position: absolute;
+    height: 100%;
+    width: 45%;
+    transition-duration: 0.5s;
+
+    overflow: hidden;
+  }
+
+  .sidebar-displaynone {
+    display: none;
+    transition-duration: 0.5s;
+  }
+
+  .chats {
+    flex: 2;
+    background-color: #eeeeee;
+  }
+
+  .navbar {
+    height: 50px;
+    background-color: #658864;
+    display: flex;
+    justify-content: space-between;
+    border-right: none;
+  }
+
+  #default-profile {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    border: 0.5px solid white;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+
+  #username {
+    color: #ffffe8;
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 24px;
+    margin-top: 14px;
+    margin-left: 5px;
+  }
+
+  .search-user {
+    width: 100%;
+    height: 35px;
+    background-color: #ffffe8;
+    border: none;
+    outline: none;
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 16px;
+    color: #658864;
+  }
+
+  .search-user :focus {
+    outline: none;
+  }
+
+  .search-user::placeholder {
+    color: gray;
+    opacity: 50%;
+  }
+
+  /* .chat {
+  overflow: scroll;
+} */
+
+  .contact-chat {
+    display: flex;
+    background-color: #658864;
+    color: #fae3e3;
+    font-family: "Sofia Sans", sans-serif;
+    border-bottom: 1.5px solid white;
+    cursor: pointer;
+  }
+
+  .contact-chat:hover {
+    background-color: #343a27;
+  }
+
+  .contact-profile {
+    border-radius: 50%;
+    border: 1px solid white;
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+
+    object-fit: cover;
+
+    margin-top: 3px;
+    margin-left: 7px;
+  }
+
+  .contact-name-message {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+  }
+
+  .contact-name {
+    font-size: 18px;
+    margin-bottom: 5px;
+    margin-top: 7px;
+    letter-spacing: 1px;
+  }
+
+  .contact-last-message {
+    margin: 0px;
+    font-size: 12px;
+    opacity: 80%;
+  }
+
+  .topbar {
+    height: 50px;
+    background-color: #658864;
+    border: 1px solid white;
+    border-left: none;
+    color: #fae3e3;
+    font-family: "Sofia Sans", sans-serif;
+  }
+
+  .topbar-contact-name {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding-top: 15px;
+    margin-left: 15px;
+    right: 0;
+  }
+
+  .topbar-contact-name button {
+    margin-right: 30px;
+    background-color: rgb(248, 233, 235);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 17px;
+  }
+
+  .topbar-contact-name button:hover {
+    opacity: 90%;
+  }
+
+  .messages-component {
+    /* height: 380px; */
+    height: 78%;
+    font-family: "Sofia Sans", sans-serif;
+    background-color: #a6bb8d;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .sendbox {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    border-top: #a6bb8d 5px solid;
+    z-index: 3;
+  }
+
+  .sendbox input {
+    height: 50px;
+    font-family: "Sofia Sans", sans-serif;
+    width: 80%;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    color: #3c6255;
+    padding-left: 20px;
+    overflow: scroll;
+  }
+
+  .sendbox input ::placeholder {
+    color: #a6bb8d;
+  }
+  .messages-component {
+    height: 80%;
+    font-family: "Sofia Sans", sans-serif;
+    background-color: #a6bb8d;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  /* .messages-component::-webkit-scrollbar {
+} */
+
+  .sendButton {
+    height: 40px;
+    margin-top: 4px;
+    margin-right: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #3c6255;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+  }
+
+  .clipButton {
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    color: #3c6255;
+    cursor: pointer;
+  }
+
+  .receivedMessage p {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .sentMessage {
+    /* margin-top: 2px; */
+
+    margin-right: 8px;
+    background-color: rgb(114, 136, 100);
+    max-width: 70%;
+    min-width: 10%;
+    display: flex;
+    width: fit-content;
+    padding: 2px;
+    border-radius: 12px 0px 12px 12px;
+    margin-bottom: 2px;
+    justify-content: center;
+  }
+
+  .sentMessage p {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .owner {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .contact-chat-search {
+    display: flex;
+    background-color: rgb(5, 81, 5);
+    color: #fae3e3;
+    font-family: "Sofia Sans", sans-serif;
+    border-bottom: 1.5px solid white;
+    cursor: pointer;
+  }
+
+  .contact-chat-search:hover {
+    opacity: 80%;
+  }
+
+  .searchResults {
+    overflow: scroll;
+  }
+
+  .searchResults::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* CHECKBOX STYLING: */
+
+  .menu-button {
+    display: block;
+  }
+
+  .topbar-button-group {
+    margin-top: 5px;
+    display: flex;
+  }
+}
+
+/* #########################################################################################################################
+####################################### M E D I A   Q U E R I E S #######################################################
+######################################################################################################################### */
+@media screen and (min-height: 1000px) {
+  .chats {
+    background-color: #eeeeee;
+    position: relative;
+  }
+  .sidebar {
+    flex: 1;
+    border: 1px solid white;
+    background-color: #cde990;
+    position: absolute;
+    height: 100%;
+    width: 45%;
+    transition-duration: 0.5s;
+
+    overflow: hidden;
+  }
+  .menu-button {
+    display: block;
+  }
+
+  .sidebar-displaynone {
+    display: none;
+    transition-duration: 0.5s;
+  }
+
+  .messages-component {
+    height: 90%;
+    font-family: "Sofia Sans", sans-serif;
+    background-color: #a6bb8d;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .topbar-button-group {
+    margin-top: 5px;
+    display: flex;
+  }
+
+  .sendbox {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    border-top: #a6bb8d 5px solid;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .sendbox input {
+    height: 50px;
+    font-family: "Sofia Sans", sans-serif;
+    width: 80%;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    color: #3c6255;
+    padding-left: 20px;
+    overflow: scroll;
+  }
 }
