@@ -84,9 +84,10 @@ body {
   opacity: 50%;
 }
 
-/* .chat {
-  overflow: scroll;
-} */
+.chat-contacts-section {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
 .contact-chat {
   display: flex;

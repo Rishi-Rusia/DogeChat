@@ -15,10 +15,17 @@ export default function Navbar() {
       const docRef = doc(db, "users", `${currentUser.uid}`);
       const docSnap = await getDoc(docRef);
 
-      setuserName(
-        docSnap._document.data.value.mapValue.fields.username.stringValue
-      );
-      setphoto(docSnap._document.data.value.mapValue.fields.image.stringValue);
+      console.log(docSnap);
+      console.log("This is docsnap data:::" + docSnap.data());
+
+      if (docSnap.exists()) {
+        setuserName(
+          docSnap._document.data.value.mapValue.fields.username.stringValue
+        );
+        setphoto(
+          docSnap._document.data.value.mapValue.fields.image.stringValue
+        );
+      }
     };
 
     loader();

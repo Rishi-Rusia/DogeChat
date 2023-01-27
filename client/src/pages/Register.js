@@ -6,8 +6,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Register() {
+  const [res, setResult] = useState({});
   const navigate = useNavigate();
   const OnSubmit = async (e) => {
     e.preventDefault();
@@ -22,12 +24,12 @@ export default function Register() {
     const storageRef = ref(storage, `images/${authUserName}.jpg`);
     const uploadTask = uploadBytesResumable(storageRef, authImage);
     console.log(authEmail);
-    let res;
+
     createUserWithEmailAndPassword(auth, authEmail, authPassword)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        res = user;
+        setResult(user);
         console.log(user);
         // ...
       })
@@ -78,6 +80,7 @@ export default function Register() {
             await setDoc(doc(db, "userchats", `${res.uid}`), {});
             navigate("/");
           } catch (error) {
+            alert(error);
             console.log(error);
           }
         });

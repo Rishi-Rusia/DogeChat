@@ -28,10 +28,12 @@ export default function Chat() {
     };
 
     currentUser.uid && getChats();
-  }, [currentUser.uid]);
+  }, [currentUser.uid, chats]);
 
   const handleSelect = (u) => {
-    dispatch({ type: "CHANGE_USER", payload: u });
+    if (chats && u) {
+      dispatch({ type: "CHANGE_USER", payload: u });
+    }
   };
 
   console.log();
@@ -53,30 +55,32 @@ export default function Chat() {
   return (
     <div className="chat">
       <Search></Search>
-
-      {Object.entries(chats).map((chats) => {
-        return (
-          <div
-            className="contact-chat"
-            key={chats}
-            onClick={() => handleSelect(chats[1].userInfo)}
-          >
-            <img
-              src={chats[1].userInfo.image}
-              alt=""
-              className="contact-profile"
-            />
-            <div className="contact-name-message">
-              <span className="contact-name">
-                <b>{chats[1].userInfo.username}</b>
-              </span>
-              <p className="contact-last-message">
-                {chats[1].lastMessage?.text}
-              </p>
-            </div>
-          </div>
-        );
-      })}
+      <div className="chat-contacts-section">
+        {chats &&
+          Object.entries(chats).map((chats) => {
+            return (
+              <div
+                className="contact-chat"
+                key={chats}
+                onClick={() => handleSelect(chats[1].userInfo)}
+              >
+                <img
+                  src={chats[1].userInfo.image}
+                  alt=""
+                  className="contact-profile"
+                />
+                <div className="contact-name-message">
+                  <span className="contact-name">
+                    <b>{chats[1].userInfo.username}</b>
+                  </span>
+                  <p className="contact-last-message">
+                    {chats[1].lastMessage?.text}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }

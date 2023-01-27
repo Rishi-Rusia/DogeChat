@@ -21,10 +21,11 @@ export default function Search() {
   const [searchState, setSearchState] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [user, setUser] = useState(null);
+  // const [chatResult, setChatResult] = useState(null);
   // const [chats, setChats] = useState([]);
   // const { dispatch } = useContext(ChatContext);
 
-  const handleSelect = async (username, u) => {
+  const handleSelect = async (username) => {
     console.log("handleSelect fired");
 
     const citiesRef = collection(db, "users");
@@ -245,18 +246,20 @@ export default function Search() {
 
                 try {
                   console.log("between updatedocs");
-                  await updateDoc(doc(db, "userchats", user.uid), {
-                    [combinedId + ".userInfo"]: {
-                      uid: currentUser.uid,
-                      username:
-                        docSnap._document.data.value.mapValue.fields.username
-                          .stringValue,
-                      image:
-                        docSnap._document.data.value.mapValue.fields.image
-                          .stringValue,
-                    },
-                    [combinedId + ".date"]: serverTimestamp(),
-                  });
+                  if (docSnap.exists()) {
+                    await updateDoc(doc(db, "userchats", user.uid), {
+                      [combinedId + ".userInfo"]: {
+                        uid: currentUser.uid,
+                        username:
+                          docSnap._document.data.value.mapValue.fields.username
+                            .stringValue,
+                        image:
+                          docSnap._document.data.value.mapValue.fields.image
+                            .stringValue,
+                      },
+                      [combinedId + ".date"]: serverTimestamp(),
+                    });
+                  }
                 } catch (error) {
                   console.log(error);
                 }
